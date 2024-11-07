@@ -13,12 +13,12 @@ public class Topic {
         messageList=new ArrayList<>();
         publisherSet= Collections.synchronizedSet(new HashSet<>());
     }
-    public void subscribe(Publisher publisher)
+    public synchronized void subscribe(Publisher publisher)
     {
             publisherSet.add(publisher);
             System.out.println(publisher.name+" subscribed to "+this.name);
     }
-    public void unsubscribe(Publisher publisher)
+    public synchronized void unsubscribe(Publisher publisher)
     {
         publisherSet.remove(publisher);
         System.out.println(publisher.name+" unsubscribed to "+this.name);
